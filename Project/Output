@@ -1,0 +1,61 @@
+login-20-26:/Project2/Project$ g++ matrixMul_cpu.cpp -o matrixMul_cpu.exe
+login-20-26:/Project2/Project$ ./matrixMul_cpu.exe >> matrixMul_cpu.out
+login-20-26:/Project2/Project$ cat matrixMul_cpu.out
+Size of matrix (N) is 512 by 512.
+Starting CPU computation
+It took 750.078667 ms on avg.
+RUN OK.
+===
+login-20-26:/Project2/Project$ interactive -p gpu-build
+[CPUs=1 NNodes=1 Name=INTERACTIVE Account=default Partition=gpu-build X11=NO]
+
+salloc: Pending job allocation 7832622
+salloc: job 7832622 queued and waiting for resources
+salloc: job 7832622 has been allocated resources
+salloc: Granted job allocation 7832622
+salloc: Waiting for resource configuration
+salloc: Nodes gpu-20-11 are ready for job
+==
+gpu-20-11:/Project2/Project$ nvcc matrixMul_gpu.cu -o matrixMul_gpu.exe
+gpu-20-11:/Project2/Project$ ./matrixMul_gpu.exe >> matrixMul_gpu.out
+Segmentation fault (core dumped)
+gpu-20-11:/Project2/Project$ cat matrixMul_gpu.out
+gpu-20-11:/Project2/Project$
+==
+gpu-20-11:/Project2/Project$ nvcc matrixMul_gpu_1.cu -o matrixMul_gpu_1.exe
+gpu-20-11:/Project2/Project$ ./matrixMul_gpu_1.exe >> matrixMul_gpu_1.out
+gpu-20-11:/Project2/Project$ cat matrixMul_gpu_1.out
+Size of matrix (N) is 512 by 512.
+Starting unoptimized GPU computation
+It took 9601.404667 ms on avg.
+RUN OK.
+==
+gpu-20-11:/Project2/Project$ vi matrixMul_gpu_2.cu
+gpu-20-11:/Project2/Project$ nvcc matrixMul_gpu_2.cu -o matrixMul_gpu_2.exe
+gpu-20-11:/Project2/Project$ ./matrixMul_gpu_2.exe >> matrixMul_gpu_2.out
+gpu-20-11:/Project2/Project$ cat matrixMul_gpu_2.out
+Size of matrix (N) is 512 by 512.
+Starting unoptimized GPU computation
+It took 5.238667 ms on avg.
+RUN OK.
+gpu-20-11:/Project2/Project$
+==
+gpu-20-11:/Project2/Project$ vi matrixMul_gpu_3.cu
+gpu-20-11:/Project2/Project$ nvcc matrixMul_gpu_3.cu -o matrixMul_gpu_3.exe
+gpu-20-11:/Project2/Project$ ./matrixMul_gpu_3.exe >> matrixMul_gpu_3.out
+gpu-20-11:/Project2/Project$ cat matrixMul_gpu_3.out
+Size of matrix (N) is 512 by 512.
+Starting unoptimized GPU computation
+It took 0.997667 ms on avg.
+RUN OK.
+gpu-20-11:/Project2/Project$
+==
+gpu-20-11:/Project2/Project$ vi matrixMul_gpu_4.cu
+gpu-20-11:/Project2/Project$ nvcc matrixMul_gpu_4.cu -o matrixMul_gpu_4.exe
+gpu-20-11:/Project2/Project$ ./matrixMul_gpu_4.exe >> matrixMul_gpu_4.out
+gpu-20-11:/Project2/Project$ cat matrixMul_gpu_4.out
+Size of matrix (N) is 512 by 512.
+Starting unoptimized GPU computation
+It took 0.994333 ms on avg.
+RUN OK.
+==
